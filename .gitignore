@@ -1,0 +1,8 @@
+.editorconfig
+docs
+build
+*.d
+*.o
+*.lst
+*.dat
+~$Poradnik.*
