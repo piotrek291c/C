@@ -1,0 +1,3 @@
+[submodule "STM32"]
+	url = ../../stm32
+	path = source/microcontroller/stm32
