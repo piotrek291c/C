@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include "Standart_Types.h"
+#include "chapter1.h"
+
 
 int main(int argc, char *argv[]) 
 {
-   sint8 zmienna = 0;
    
-   printf("Hello, World! zmienna: %d \n", zmienna);
-   printf("Press ENTER key to Continue\n");  
-   getchar();    
+   chapter1_exc1();
+
+   getchar();
+   getchar();
    return 0;
 }

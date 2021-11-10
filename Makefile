@@ -76,13 +76,14 @@ CFLAGS += -Wall
 CFLAGS += -MMD -MP
 
 # ----------------------------------------------------------------------------------------
+# TODO: Add all file to path
 # ----------------------------------------------------------------------------------------
 INCLUDE =	-I./source \
 			-I./source/header \
 			-I./source/task
 
-SOURCE = 	$(SRC)/main.c
-# 	./src/syscalls.c \
+SOURCE = 	$(SRC)/main.c  \
+	    	$(SRC)/task/chapter1.c
 
 DEP = $(patsubst %.c, %.d, $(SOURCE))
 
@@ -104,11 +105,9 @@ clean:
 	@echo
 	@echo ----------------------------------------
 	@echo $(MSG_CLEANING)
-
 	$(RM) $(TARGET).exe;
 	$(RM) $(SOURCE:.c=.o);
 	$(RM) $(SOURCE:.c=.d);
-
 	@echo $(QUOTE)Clean done!!! $(QUOTE)
 	@echo ----------------------------------------
 
@@ -127,13 +126,11 @@ end:
 gccversion:
 	@$(GCC) --version
 
-
-
-main.c:
-	@$(GCC) source/main.c -o source/build/main
-
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 $(TARGET).exe: $(COBJ)
 	@echo
+	@echo ----------------------------------------
 	@echo $(MSG_LINKING) $@
 	@$(GCC) $(CFLAGS) -Wl,-o$(TARGET).exe,$(COBJ)
 
@@ -142,6 +139,7 @@ $(TARGET).exe: $(COBJ)
 # Compile: create object files from C source files. ARM/Thumb
 $(COBJ) : %.o : %.c
 	@echo
+	@echo ----------------------------------------
 	@echo $(MSG_COMPILING) $<
 	@$(GCC) -c $(INCLUDE) $(CFLAGS) $(CONLYFLAGS) $< -o $*.o
 
@@ -150,7 +148,6 @@ $(COBJ) : %.o : %.c
 # Include the dependency files.
 # -include $(shell mkdir .dep 2>/dev/null) $(wildcard .dep/*)
 -include $(DEP)
-
 
 # Listing of phony targets.
 .PHONY : all build clean begin finish end gccversion

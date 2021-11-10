@@ -24,6 +24,14 @@
 #define FALSE           0u
 #endif
 
+# define STD_HIGH     1u /* Physical state 5V or 3.3V */
+# define STD_LOW      0u /* Physical state 0V */
+
+# define STD_ACTIVE   1u /* Logical state active */
+# define STD_IDLE     0u /* Logical state idle */
+
+# define STD_ON       1u
+# define STD_OFF      0u
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -100,7 +108,15 @@
 
 # endif
 
- 
+ /* This typedef has been added for OSEK compliance */
+
+#define E_OK       0U
+
+#define E_NOT_OK   1U
+
+#define E_PENDING  10U
+
+typedef uint8 Std_ReturnType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
