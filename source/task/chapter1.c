@@ -31,31 +31,37 @@
 Std_ReturnType chapter1_exc1(void)
 {
     char card_name[3];
-    int val = 0;
+    sint32 val = 0;
+    sint32 count = 0;
     puts("Wpisz symbol karty:");
     scanf("%2s", card_name);
 
-    if(card_name[0] == 'K')
+    switch(card_name[0])
     {
-        val = 10;
-    }
-    else if (card_name[0] == 'Q')
-    {
-        val = 10;
-    }
-    else if (card_name[0] == 'J')
-    {
-        val = 10;
-    }else if (card_name[0] == 'A')
-    {
-        val = 11;
-    }
-    else
-    {
-        val = atoi(card_name);
+        case 'K':
+        case 'Q':
+        case 'J':
+            val = 10;
+            break;
+        case 'A':
+            val = 11;
+            break;
+        default:
+            val = atoi(card_name);    
     }
 
-    printf("Wartosc karty to: %i\n", val);
+    if((val >= 3) && (val <= 6))
+    {
+        count++;
+        printf("Dodano jeden do wartosci licznika: %ld\n", count);
+    }
+    else if (val == 10)
+    {
+        count--;
+        printf("Odjeto jeden od wartosci licznika: %ld\n", count);
+    }
+    
+    printf("Wartosc karty to: %ld\n", val);
     return E_OK;
 }
 

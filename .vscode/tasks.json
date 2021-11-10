@@ -2,19 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "compile and run C",
-            "type": "shell",
-            "command": "gcc -g  main.c -o main.exe  && .\\main.exe ",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
             "type": "shell",
             "label": "build active file",
             "command": "make all",
