@@ -20,7 +20,7 @@
 *******************************************************************************/
 
 /*!*****************************************************************************
- * START - functions 
+ * START - functions
 *******************************************************************************/
 
 /**
@@ -36,21 +36,21 @@ Std_ReturnType chapter1_exc1(void)
     puts("Wpisz symbol karty:");
     scanf("%2s", card_name);
 
-    switch(card_name[0])
+    switch (card_name[0])
     {
-        case 'K':
-        case 'Q':
-        case 'J':
-            val = 10;
-            break;
-        case 'A':
-            val = 11;
-            break;
-        default:
-            val = atoi(card_name);    
+    case 'K':
+    case 'Q':
+    case 'J':
+        val = 10;
+        break;
+    case 'A':
+        val = 11;
+        break;
+    default:
+        val = atoi(card_name);
     }
 
-    if((val >= 3) && (val <= 6))
+    if ((val >= 3) && (val <= 6))
     {
         count++;
         printf("Dodano jeden do wartosci licznika: %ld\n", count);
@@ -66,5 +66,5 @@ Std_ReturnType chapter1_exc1(void)
 }
 
 /*!*****************************************************************************
- * STOP - functions 
+ * STOP - functions
 *******************************************************************************/

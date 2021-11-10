@@ -1,6 +1,6 @@
 # C
-Performed exercises related to learning the C programming language
 
+Performed exercises related to learning the C programming language
 
 Zainstalowane dodatki do Visual studio code
 Nazwa: Settings Sync
@@ -23,3 +23,4 @@ Nazwa: Better Comments
 Nazwa: Code Spell Checker
 Nazwa: Polish - Code Spell Checker
 Nazwa: SonarLint
+Nazwa: Trailing Spaces
