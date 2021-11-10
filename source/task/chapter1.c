@@ -23,7 +23,7 @@
  * START - functions 
 *******************************************************************************/
 
-/*!
+/**
  * @brief  Function to count card.
  * @param  void - void
  * @return Std_ReturnType - standart type to inform status function
@@ -60,7 +60,7 @@ Std_ReturnType chapter1_exc1(void)
         count--;
         printf("Odjeto jeden od wartosci licznika: %ld\n", count);
     }
-    
+
     printf("Wartosc karty to: %ld\n", val);
     return E_OK;
 }
