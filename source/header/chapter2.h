@@ -1,6 +1,6 @@
 /*******************************************************************************
 * @file
-* @brief     Chapter 1 from book
+* @brief     Chapter 2 from book
 *
 * @par Copyright
 * This code is the property of \n
@@ -10,8 +10,8 @@
 *
 *******************************************************************************/
 
-#ifndef __CHAPTER1_H__
-#define __CHAPTER1_H__
+#ifndef __CHAPTER2_H__
+#define __CHAPTER2_H__
 
 /*******************************************************************************
  * Includes
@@ -23,6 +23,6 @@
 /*******************************************************************************
  * Function declaration
 *******************************************************************************/
-Std_ReturnType chapter1_exc1(void);
+Std_ReturnType chapter2_exc1(void);
 
-#endif // __CHAPTER1_H__
+#endif // __CHAPTER2_H__
