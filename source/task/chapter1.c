@@ -33,35 +33,46 @@ Std_ReturnType chapter1_exc1(void)
     char card_name[3];
     sint32 val = 0;
     sint32 count = 0;
-    puts("Wpisz symbol karty:");
-    scanf("%2s", card_name);
-
-    switch (card_name[0])
+    while (card_name[0] != 'X')
     {
-    case 'K':
-    case 'Q':
-    case 'J':
-        val = 10;
-        break;
-    case 'A':
-        val = 11;
-        break;
-    default:
-        val = atoi(card_name);
-    }
+        puts("Wpisz symbol karty:");
+        scanf("%2s", card_name);
 
-    if ((val >= 3) && (val <= 6))
-    {
-        count++;
-        printf("Dodano jeden do wartosci licznika: %ld\n", count);
-    }
-    else if (val == 10)
-    {
-        count--;
-        printf("Odjeto jeden od wartosci licznika: %ld\n", count);
-    }
+        switch (card_name[0])
+        {
+        case 'K':
+        case 'Q':
+        case 'J':
+            val = 10;
+            break;
+        case 'A':
+            val = 11;
+            break;
+        case 'X':
+            printf("Koncze dzialanie programu\n");
+            break;
+        default:
+            val = atoi(card_name);
+            if ((val < 1) || (val > 10))
+            {
+                printf("Wpisales niewlasciwa wartosc karty\n");
+                continue;
+            }
+        }
 
-    printf("Wartosc karty to: %ld\n", val);
+        if ((val >= 3) && (val <= 6))
+        {
+            count++;
+            printf("Dodano jeden do wartosci licznika: %ld\n", count);
+        }
+        else if (val == 10)
+        {
+            count--;
+            printf("Odjeto jeden od wartosci licznika: %ld\n", count);
+        }
+
+        printf("Wartosc karty to: %ld\n", val);
+    }
     return E_OK;
 }
 
