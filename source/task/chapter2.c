@@ -84,7 +84,7 @@ Std_ReturnType chapter2_exc1(void)
     type_size_defined();
 
     go_south_est(&latitude, &longitude);
-    printf("Stop! Aktualne polozenie: [%ld, %ld], \n", latitude, longitude);
+    printf("Stop! Aktualne  polozenie: [%ld, %ld], \n", latitude, longitude);
 
     return E_OK;
 }
