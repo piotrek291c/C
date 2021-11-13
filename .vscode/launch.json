@@ -1,12 +1,12 @@
 {
     "version": "0.2.0",
-    "configurations": 
+    "configurations":
     [
         {
             "name": "build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:\\Users\\Beata\\Desktop\\Warfin\\Nowy folder\\kurs\\C\\C\\source\\build\\main.exe",
+            "program": "C:\\Users\\lenovo\\Desktop\\BURY_PRACA\\Projekty\\GitHub\\C\\source\\build\\main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -27,7 +27,7 @@
             "name": "build & run active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:\\Users\\Beata\\Desktop\\Warfin\\Nowy folder\\kurs\\C\\C\\source\\build\\main.exe",
+            "program": "C:\\Users\\lenovo\\Desktop\\BURY_PRACA\\Projekty\\GitHub\\C\\source\\build\\main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

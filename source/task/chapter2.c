@@ -14,6 +14,7 @@
  * Includes
 *******************************************************************************/
 #include "chapter2.h"
+#include <string.h>
 
 /*!*****************************************************************************
  * Private variables
@@ -38,7 +39,7 @@ static void go_south_est(sint32 *lat, sint32 *longi)
  * @brief printf all size defined in Standart_types.h
  *
  */
-void type_size_defined(void)
+static void type_size_defined(void)
 {
     printf("Size of sint8: %d\n", sizeof(sint8));
     printf("Size of sint16: %d\n", sizeof(sint16));
@@ -68,6 +69,87 @@ void type_size_defined(void)
     printf("Size of *pt: %d\n", sizeof(*pt));
     // rozmiar tablicy powinien być przekazany w postaci osobnej zmiennej do funkcji
 }
+
+/**
+ * @brief Function find text song
+ *
+ * @param tab - tab wit all song
+ * @param find - text to find
+ */
+static void find_text(const char tab[][80], const char find[])
+{
+
+    for (sint8 i = 0; i < 5; i++)
+    {
+        if (strstr(tab[i], find))
+        {
+            printf("Poszukiwany tekst %s zostal znaleziony w %i, tytul %s \n", find, i, tab[i]);
+        }
+        else
+        {
+            // printf("Poszukiwany tekst %s nie zostal znaleziony \n", find);
+        }
+    }
+}
+
+/**
+ * @brief Function find song
+ *
+ */
+static void findSong(void)
+{
+    char listSong[][80] = {"Czlowiek bez liscia",
+                           "Utracilas",
+                           "Hiena boggie",
+                           "Co powie Siara",
+                           "Ja mam nieszczescie"};
+
+    while (1)
+    {
+        char tabSong[80];
+        printf("Podaj tytul utworu: ");
+        scanf("%s", tabSong);
+        find_text(listSong, tabSong);
+    }
+}
+
+/**
+ * @brief Function to reverse text
+ * 
+ * @param text - text to revert
+ * @return char 
+ */
+static void reverseText(char text[])
+{
+    sint8 j = 0;
+    sint8 i = 0;
+    char temp[strlen(text)];
+    for (i = strlen(text) - 1; i >= 0; i--, j++)
+    {
+        temp[j] = text[i];
+    }
+    for (i = 0; i < strlen(text); i++)
+    {
+        text[i] = temp[i];
+    }
+}
+
+/**
+ * @brief reverse text
+ *
+ * @param s - pointer to text
+ */
+static void revers(char *s)
+{
+    sint8 len = strlen(s);
+    sint8 i = len;
+    while (i >= 0)
+    {
+        printf("%c", s[i]);
+        i--;
+    }
+    printf("\n");
+}
 /*******************************************************************************
  * START - functions
 *******************************************************************************/
@@ -86,6 +168,12 @@ Std_ReturnType chapter2_exc1(void)
     go_south_est(&latitude, &longitude);
     printf("Stop! Aktualne  polozenie: [%ld, %ld], \n", latitude, longitude);
 
+    // findSong();
+    char tab[] = "alamakota";
+    reverseText(tab);
+    printf("odwrocony tekst: %s ", tab);
+    revers(tab);
+    findSong();
     return E_OK;
 }
 
