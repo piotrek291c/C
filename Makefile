@@ -84,7 +84,8 @@ INCLUDE =	-I./source \
 
 SOURCE = 	$(SRC)/main.c  \
 	    	$(SRC)/task/chapter1.c \
-			$(SRC)/task/chapter2.c
+			$(SRC)/task/chapter2.c \
+			$(SRC)/task/chapter3.c
 
 DEP = $(patsubst %.c, %.d, $(SOURCE))
 
