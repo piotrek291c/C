@@ -45,7 +45,7 @@ static void bermuda(void)
 
 /**
  * @brief
- *
+ * 
  * @return Std_ReturnType
  */
 static Std_ReturnType gps(void)
