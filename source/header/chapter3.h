@@ -23,6 +23,6 @@
 /*******************************************************************************
  * Function declaration
 *******************************************************************************/
-Std_ReturnType chapter3_exc1(void);
+Std_ReturnType chapter3_exc1(int argc, char *argv[]);
 
 #endif // __CHAPTER3_H__

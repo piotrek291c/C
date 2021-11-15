@@ -45,7 +45,7 @@ static void bermuda(void)
 
 /**
  * @brief
- * 
+ *
  * @return Std_ReturnType
  */
 static Std_ReturnType gps(void)
@@ -77,6 +77,83 @@ static Std_ReturnType gps(void)
     printf("]\n");
     return E_OK;
 }
+
+/**
+ * @brief Function save data in file
+ *
+ */
+static Std_ReturnType saveDataInFile(int argc, char *argv[])
+{
+    char tab[80];
+
+    if (argc != 6)
+    {
+        printf(" Musisz podac 5 argumentow podczas wywolania z wiersza polecen \n");
+        printf(" exp:  ./main Jestem jestem.txt tam tam.txt other.txt \n");
+        return E_NOT_OK;
+    }
+    FILE *in = fopen("in.txt", "r");
+    if (in == NULL)
+    {
+        printf("Nie udalo sie otworzyc pliku in.txt \n");
+        return E_NOT_OK;
+    }
+    else
+    {
+        printf("Plik otwarty pomyslnie!\n");
+    }
+
+    FILE *plik1 = fopen(argv[2], "w+");
+    FILE *plik2 = fopen(argv[4], "w+");
+    FILE *plik3 = fopen(argv[5], "w+");
+    if (plik1 == NULL)
+    {
+        printf("Nie udalo sie otworzyc pliku %s\n", argv[2]);
+        // return E_NOT_OK;
+    }
+    else
+    {
+        printf("Plik otwarty pomyslnie!\n");
+    }
+    if (plik2 == NULL)
+    {
+        printf("Nie udalo sie otworzyc pliku %s\n", argv[4]);
+        // return E_NOT_OK;
+    }
+    else
+    {
+        printf("Plik otwarty pomyslnie!\n");
+    }
+    if (plik3 == NULL)
+    {
+        printf("Nie udalo sie otworzyc pliku plik3.txt\n");
+        // return E_NOT_OK;
+    }
+    else
+    {
+        printf("Plik otwarty pomyslnie!\n");
+    }
+    while (fscanf(in, "%79[^\n]\n", tab) == 1)
+    {
+        if (strstr(tab, argv[1]) != 0)
+        {
+            fprintf(plik1, "%s\n", tab);
+        }
+        else if (strstr(tab, argv[3]) != 0)
+        {
+            fprintf(plik2, "%s\n", tab);
+        }
+        else
+        {
+            fprintf(plik3, "%s\n", tab);
+        }
+    }
+    fclose(in);
+    fclose(plik1);
+    fclose(plik2);
+    fclose(plik3);
+    return E_OK;
+}
 /*******************************************************************************
  * START - functions
 *******************************************************************************/
@@ -92,10 +169,11 @@ static Std_ReturnType gps(void)
  * @return Std_ReturnType
  */
 
-Std_ReturnType chapter3_exc1(void)
+Std_ReturnType chapter3_exc1(int argc, char *argv[])
 {
 
-    bermuda();
+    // bermuda();
+    saveDataInFile(argc, argv);
     return E_OK;
 }
 /*!*****************************************************************************
