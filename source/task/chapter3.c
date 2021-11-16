@@ -15,6 +15,7 @@
 *******************************************************************************/
 #include "chapter2.h"
 #include <string.h>
+#include <unistd.h>
 
 /*!*****************************************************************************
  * Private variables
@@ -154,6 +155,58 @@ static Std_ReturnType saveDataInFile(int argc, char *argv[])
     fclose(plik3);
     return E_OK;
 }
+
+/**
+ * @brief
+ *
+ * @param argc
+ * @param argv
+ * @return Std_ReturnType
+ */
+static Std_ReturnType orderPizza(int argc, char *argv[])
+{
+    char *delivery = "";
+    sint8 count = 0;
+    sint8 thick = 0;
+    char ch;
+
+    while ((ch = getopt(argc, argv, "d:t")) != EOF)
+    {
+        switch (ch)
+        {
+        case 'd':
+            delivery = optarg;
+            break;
+        case 't':
+            thick = TRUE;
+            break;
+        default:
+            fprintf(stderr, "Nieznana opcja %s \n", optarg);
+            return E_NOT_OK;
+        }
+    }
+    argc -= optind;
+    argv += optind;
+
+    if (thick)
+    {
+        printf("Grube ciasto \n");
+    }
+
+    if (delivery[0])
+    {
+        printf("dostawa o %s\n", delivery);
+    }
+
+    puts("Skladniki:");
+
+    for (count = 0; count < argc; count++)
+    {
+        puts(argv[count]);
+    }
+
+    return E_OK;
+}
 /*******************************************************************************
  * START - functions
 *******************************************************************************/
@@ -173,7 +226,8 @@ Std_ReturnType chapter3_exc1(int argc, char *argv[])
 {
 
     // bermuda();
-    saveDataInFile(argc, argv);
+    // saveDataInFile(argc, argv);
+    orderPizza(argc, argv);
     return E_OK;
 }
 /*!*****************************************************************************
