@@ -9,9 +9,14 @@
                 "${workspaceFolder}/source/header/**",
                 "${workspaceFolder}/source/task/**"
             ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
             "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
-            "cStandard": "gnu11",
-            "cppStandard": "gnu++14",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
             "intelliSenseMode": "windows-gcc-x86"
         }
     ],
