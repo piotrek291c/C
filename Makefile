@@ -1,6 +1,7 @@
 #
 # A simple makefile for compiling a c++ project
 #
+# http://www.gnu.org/software/make/manual/make.html
 
 ##########################################################################################
 # Paths
@@ -108,7 +109,8 @@ SOURCES = 	$(SRC)/main.c  \
 	    	$(SRC)/task/chapter1.c \
 			$(SRC)/task/chapter2.c \
 			$(SRC)/task/chapter3.c \
-            $(SRC)/task/chapter4.c
+			$(SRC)/task/chapter4.c \
+            $(SRC)/task/chapter5.c
 
 DEP = $(patsubst %.c, %.d, $(SOURCES))
 
