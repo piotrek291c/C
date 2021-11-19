@@ -49,7 +49,7 @@ typedef enum
 } Motor_OnOff_EType;
 
 /**
- * \brief Structure example storing data of motor
+ * @brief Structure example storing data of motor
  */
 typedef struct
 {
@@ -57,6 +57,56 @@ typedef struct
     sint8 speed;
     exampleReturnType status;
 } Motor_OnOff_SType;
+
+typedef struct
+{
+    const char *name;
+    const char *species;
+    sint8 age;
+} Turtle_SType;
+
+typedef struct
+{
+    float32 tankCapacity;
+    uint16 tankPsi;
+    const char *suitMaterial;
+} Equipment_SType;
+
+typedef struct
+{
+    const char *name;
+    Equipment_SType kit;
+} Diver_SType;
+
+typedef struct
+{
+    const char *description;
+    float32 duration;
+} Exercise_SType;
+
+typedef struct
+{
+    const char *ingriditenst;
+    float32 weight;
+} Meal_SType;
+
+typedef struct
+{
+    Meal_SType food;
+    Exercise_SType exercise_hours;
+} Preferences_SType;
+
+/**
+ * @brief structure fish
+ */
+typedef struct
+{
+    const char *name;
+    const char *species;
+    uint8 age;
+    uint8 teeth;
+    Preferences_SType care;
+} Fish_SType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES

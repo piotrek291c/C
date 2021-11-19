@@ -135,9 +135,12 @@ clean:
 	@echo
 	@echo ----------------------------------------
 	@echo $(MSG_CLEANING)
-	$(RM) $(TARGET).exe;
-	$(RM) $(SOURCES:.c=.o);
-	$(RM) $(SOURCES:.c=.d);
+# $(RM) $(TARGET).exe;
+# $(RM) $(SOURCES:.c=.o);
+# $(RM) $(SOURCES:.c=.d);
+	-find . -name '*.o'     -exec $(RM) {} \;
+	-find . -name '*.d'     -exec $(RM) {} \;
+	-find . -name '*.exe'   -exec $(RM) {} \;
 	@echo $(QUOTE)Clean done!!! $(QUOTE)
 	@echo ----------------------------------------
 
