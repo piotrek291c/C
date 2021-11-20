@@ -4,47 +4,87 @@ Performed exercises related to learning the C programming language
 
 <!-- Skróty klawiszowe -->
 
-Ctrl + K + S - keyboard shortcuts
+Ctrl + K + S                 - Keyboard shortcuts
 
-CTRL +SHIFT + P - Command Palette
+CTRL + SHIFT + P             - Command Palette
 
-CTRL + P - Quick Open
+CTRL + P                     - Quick Open
 
-CTRL + B - Toggle Sidebar
+Ctrl + X                     - Cut line (empty selection)
 
-Shift + left/right -select text
+Ctrl + C                     - Copy line (empty selection)
 
-Shift + CTRL + left/right - select text
+Alt  + ↑ / ↓                 - Move line up/down
 
-CTRL + D - Multi-Select Cursor
+Shift + Alt + ↓ / ↑          - Copy line up/down
 
-Ctrl + Shift + L - Multi cursor selection
+Ctrl + /                     - Toggle line comment
+
+CTRL + T                     - Show All Symbols
+
+CTRL + G                     - Go to line
+
+Alt + ← / →                  - Go back / forward
+
+Ctrl + F                     - Find
+
+Ctrl + H                     - Replace
+
+Ctrl + L                     - Select current line
+
+CTRL + D                     - Multi-Select Cursor
+
+Ctrl + Shift + L             - Multi cursor selection
 
 Ctrl + Shift + Alt + up/down - Multi cursor selection
 
-SHIFT + ALT + UP or SHIFT + ALT + DOWN - Copy Line
+Ctrl + Space                 - Trigger suggestion
 
-ALT + —> or + –> - Go back / move forward (ALT+LeftArrow, ALT+RightArrow)
+Ctrl + Shift + Space         - Trigger parameter hints in argument function
 
-CTRL + T - Show All Symbols
+Shift + Alt + F              - Format document
 
-Ctrl + Space - Trigger suggestion
+F12                          - Go to Definition
 
-Ctrl + Shift + Space - Trigger parameter hints in argument function
+Ctrl + .                     - Quick Fix
 
-Shift + F12 - Show References
+Shift + F12                  - Show References
 
-Ctrl + / - Toggle line comment
+F2                           - Rename Symbol
 
-Alt + Up or Alt + Down - Move line
+Ctrl + S                     - Save
 
-Ctrl + Backspace - Delete Previous Word
+Ctrl + Shift + T             - Reopen closed editor
 
-Ctrl + ; - Cursor to home
+Ctrl + Tab                   - Open next
 
-Ctrl + ' - Cursor to end
+Ctrl + Shift + Tab           - Open previous
 
-Ctrl + Alt + S - Save to without formatting file
+CTRL + B                     - Toggle Sidebar
+
+Ctrl + Shift + E             - Show Explorer / Toggle focus
+
+Ctrl + Shift + F             - Show Search
+
+Ctrl + `                     - Show integrated terminal
+
+Ctrl + Shift + `             - Create new terminal
+
+Ctrl + Shift + C             - Copy selection
+
+Ctrl + Shift + V             - Paste into active terminal
+
+Shift + ← / →                - Select text
+
+Shift + CTRL + ← / →         - Select text
+
+Ctrl + Backspace             - Delete Previous Word
+
+Ctrl + ;                     - Cursor to home (own)
+
+Ctrl + '                     - Cursor to end (own)
+
+Ctrl + Alt + S               - Save to without formatting file (own)
 
 <!-- Zainstalowane dodatki do Visual studio code -->
 
