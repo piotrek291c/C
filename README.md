@@ -4,41 +4,47 @@ Performed exercises related to learning the C programming language
 
 <!-- Skróty klawiszowe -->
 
-CTRL+SHIFT+P - Command Palette
+Ctrl + K + S - keyboard shortcuts
 
-CTRL+P - Quick Open
+CTRL +SHIFT + P - Command Palette
 
-CTRL+B - Toggle Sidebar
+CTRL + P - Quick Open
+
+CTRL + B - Toggle Sidebar
 
 Shift + left/right -select text
 
 Shift + CTRL + left/right - select text
 
-CTRL+D - Multi-Select Cursor
+CTRL + D - Multi-Select Cursor
 
 Ctrl + Shift + L - Multi cursor selection
 
 Ctrl + Shift + Alt + up/down - Multi cursor selection
 
-SHIFT+ALT+UP or SHIFT+ALT+DOWN - Copy Line
+SHIFT + ALT + UP or SHIFT + ALT + DOWN - Copy Line
 
-ALT+ —> or + –> - Go back / move forward (ALT+LeftArrow, ALT+RightArrow)
+ALT + —> or + –> - Go back / move forward (ALT+LeftArrow, ALT+RightArrow)
 
-CTRL+T - Show All Symbols
+CTRL + T - Show All Symbols
 
-Ctrl+Space, Ctrl+Shift+Space - Trigger suggestion and Trigger parameter hints
+Ctrl + Space - Trigger suggestion
 
-Shift+F12 - Show References
+Ctrl + Shift + Space - Trigger parameter hints in argument function
 
-Ctrl+/ - Toggle line comment
+Shift + F12 - Show References
 
-Ctrl + Shift + I - Formats the entire file
+Ctrl + / - Toggle line comment
 
 Alt + Up or Alt + Down - Move line
 
 Ctrl + Backspace - Delete Previous Word
 
-Ctrl + Shift + D - Duplicate Line
+Ctrl + ; - Cursor to home
+
+Ctrl + ' - Cursor to end
+
+Ctrl + Alt + S - Save to without formatting file
 
 <!-- Zainstalowane dodatki do Visual studio code -->
 
@@ -79,7 +85,5 @@ Nazwa: Better Comments
 Nazwa: Code Spell Checker
 
 Nazwa: Polish - Code Spell Checker
-
-Nazwa: SonarLint
 
 Nazwa: Trailing Spaces
