@@ -2,14 +2,23 @@
     "terminal.integrated.inheritEnv": false,
     "editor.renderWhitespace": "all", // Turn on show whitespace
     "editor.formatOnPaste": true,     // Beautify, możesz wymusić formatowanie tekstu po jego wklejeniu do pliku,
-    "editor.formatOnSave": true,      // Formatowanie przy zapisywaniu
+    "editor.formatOnSave": false,      // Formatowanie przy zapisywaniu
     "workbench.editor.highlightModifiedTabs": true, // Podświetla zmodyfikowane karty
     "files.trimFinalNewlines": true,  // Po zapisaniu pliku program VS Code przytnie wszelkie dodatkowe znaki nowej linii na końcu pliku
     "editor.acceptSuggestionOnEnter": "off",  // Akceptowanie sugestii za pomocą Enter wyłączone
-    "files.exclude": {
+    "editor.rulers": [130],  // Włączenie poiomej lini znaków po 120
+    "editor.minimap.maxColumn": 60,  // Rozmiar minimapy
+    "editor.quickSuggestions": // Włączenie podpowiedzi podczas pisania komentarzy i tekstu w ""
+    {
+        "comments": true,
+        "strings": true
+    },
+    "files.exclude":
+    {
         "node_modules/": true
     },
-    "files.associations": {
+    "files.associations":
+    {
         "cstdio": "c",
         "platform_types.h": "c",
         "stdio.h": "c",
