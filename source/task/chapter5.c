@@ -58,6 +58,24 @@ static void happyBirthday(Turtle_SType *t)
     t->age = t->age + 1;
     printf("Najlepszego, %s, teraz masz %d lat. \n", t->name, t->age);
 }
+
+static void dispaly(Fruit_Order_SType order)
+{
+    printf("To zamowienie na ");
+    if (order.units == UNIT_LITTERS)
+    {
+        printf("%s o objestosci %2.2f litrow \n", order.name, order.amount.volume);
+    }
+    else if (order.units == UNIT_KGS)
+    {
+        printf("%s o wadze %2.2f kg \n", order.name, order.amount.weight);
+    }
+    else
+    {
+        printf("%s w ilosci %d sztuk \n", order.name, order.amount.count);
+    }
+}
+
 /*******************************************************************************
  * START - FUNCTIONS
 *******************************************************************************/
@@ -110,6 +128,15 @@ Std_ReturnType chapter5_exc1(int argc, char *argv[])
         };
     happyBirthday(&myrtle);
     printf(" %s, teraz masz %d lat. \n", myrtle.name, myrtle.age);
+
+    Fruit_Order_SType apples = {"jablka", "Anglai", .amount.count = 144, .units = UNIT_COUNT};
+    Fruit_Order_SType strawberries = {"truskawki", "Polska", .amount.weight = 17.6, .units = UNIT_KGS};
+    Fruit_Order_SType oj = {"sok pomaranczowy", "Hiszpania", .amount.volume = 10.5, .units = UNIT_LITTERS};
+
+    dispaly(apples);
+    dispaly(strawberries);
+    dispaly(oj);
+
     return E_OK;
 }
 /*!*****************************************************************************

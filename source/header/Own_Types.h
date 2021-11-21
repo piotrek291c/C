@@ -49,6 +49,36 @@ typedef enum
 } Motor_OnOff_EType;
 
 /**
+ * @brief Enum of type data stored in union
+ */
+typedef enum
+{
+    UNIT_COUNT = 0,
+    UNIT_KGS = 1,
+    UNIT_LITTERS = 2,
+} Unit_Measure_EType;
+
+/**
+ * @brief Union example storing data of motor
+ */
+typedef union
+{
+    sint32 distanceCM;
+    sint16 distanceM;
+    sint8 distanceKM;
+} Motor_distance_UType;
+
+/**
+ * @brief Unione stored quantity
+ */
+typedef union
+{
+    uint8 count;
+    float32 weight;
+    float32 volume;
+} Quantity_UType;
+
+/**
  * @brief Structure example storing data of motor
  */
 typedef struct
@@ -57,6 +87,17 @@ typedef struct
     sint8 speed;
     exampleReturnType status;
 } Motor_OnOff_SType;
+
+/**
+ * @brief Structure of fruit order
+ */
+typedef struct
+{
+    const char *name;
+    const char *country;
+    Quantity_UType amount;
+    Unit_Measure_EType units;
+} Fruit_Order_SType;
 
 typedef struct
 {
