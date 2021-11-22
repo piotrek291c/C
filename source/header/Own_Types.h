@@ -88,6 +88,15 @@ typedef struct
     exampleReturnType status;
 } Motor_OnOff_SType;
 
+typedef struct
+{
+    boolean firstVisit:1;
+    boolean comeAgain:1;
+    uint8 fingerLost:4;
+    boolean sharkAttack:1;
+    uint8 daysWeek:3;
+}Survey_SType;
+
 /**
  * @brief Structure of fruit order
  */

@@ -86,6 +86,86 @@ Ctrl + '                     - Cursor to end (own)
 
 Ctrl + Alt + S               - Save to without formatting file (own)
 
+<!-- ---------------------------------------------------------------------- -->
+
+                             - Keyboard shortcuts
+
+                             - Command Palette
+
+                             - Quick Open
+
+                             - Cut line (empty selection)
+
+                             - Copy line (empty selection)
+
+                             - Move line up/down
+
+                             - Copy line up/down
+
+                             - Toggle line comment
+
+                             - Show All Symbols
+
+                             - Go to line
+
+                             - Go back / forward
+
+                             - Find
+
+                             - Replace
+
+                             - Select current line
+
+                             - Multi-Select Cursor select word
+
+                             - Multi cursor selection
+
+                             - Multi cursor selection multiple line
+
+                             - Trigger suggestion
+
+                             - Trigger parameter hints in argument function
+
+                             - Format document
+
+                             - Go to Definition
+
+                             - Quick Fix
+
+                             - Show References
+
+                             - Rename Symbol
+
+                             - Save
+
+                             - Reopen closed editor
+
+                             - Open next
+
+                             - Open previous
+
+                             - Toggle Sidebar
+
+                             - Show Explorer / Toggle focus
+
+                             - Show Search
+
+                             - Show integrated terminal
+
+                             - Create new terminal
+
+                             - Select text single character
+
+                             - Select text word
+
+                             - Delete Previous Word
+
+                             - Cursor to home (own)
+
+                             - Cursor to end (own)
+
+                             - Save to without formatting file (own)
+
 <!-- Zainstalowane dodatki do Visual studio code -->
 
 Nazwa: Settings Sync
@@ -127,3 +207,51 @@ Nazwa: Code Spell Checker
 Nazwa: Polish - Code Spell Checker
 
 Nazwa: Trailing Spaces
+
+
+<!-- Tabelka konwersji szesnastkowej na dwójkową  i dziesiętną -->
+
+wartość         wartość            wartość
+szesnastkowa    dwójkowa           dziesiętna
+0               0000               0
+1               0001               1
+2               0010               2
+3               0011               3
+4               0100               4
+5               0101               5
+6               0110               6
+7               0111               7
+8               1000               8
+9               1001               9
+A               1010               10
+B               1011               11
+C               1100               12
+D               1101               13
+E               1110               14
+F               1111               15
+
+0x23 = 
+0x11 = 
+0x04 = 
+0x56 = 
+0x87 = 
+0x91 = 
+0xA2 = 
+0xC7 = 
+0xF6 = 
+0xB8 = 
+0xDA = 
+0xEB = 
+0xAF = 
+0xE6 = 
+0x49 = 
+0x3E = 
+0x4B = 
+0x9C = 
+0xAC = 
+0xBD = 
+0xEA = 
+0xFB = 
+0xAD = 
+0xBE = 
+0xCD = 

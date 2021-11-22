@@ -108,6 +108,7 @@ Std_ReturnType chapter5_exc1(int argc, char *argv[])
     grappy = snappy;
     catalog(snappy);
     label(snappy);
+    label(grappy);
 
     Diver_SType randy =
         {

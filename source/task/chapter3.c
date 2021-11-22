@@ -224,9 +224,9 @@ static Std_ReturnType orderPizza(int argc, char *argv[])
 
 Std_ReturnType chapter3_exc1(int argc, char *argv[])
 {
-
-    // bermuda();
-    // saveDataInFile(argc, argv);
+    gps();
+    bermuda();
+    saveDataInFile(argc, argv);
     orderPizza(argc, argv);
     return E_OK;
 }
