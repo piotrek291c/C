@@ -6,6 +6,7 @@
 #include "chapter4.h"
 #include "chapter5.h"
 #include "chapter6.h"
+#include "chapter7.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
    // chapter3_exc1(argc, argv);
    // chapter4_exc1(argc, argv);
    // chapter5_exc1(argc, argv);
-   chapter6_exc1(argc, argv);
+   chapter7_exc1(argc, argv);
 
    getchar();
    getchar();

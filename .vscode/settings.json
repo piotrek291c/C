@@ -24,6 +24,7 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "memmap.h": "c",
-        "standart_types.h": "c"
+        "standart_types.h": "c",
+        "chapter6.h": "c"
     }
 }

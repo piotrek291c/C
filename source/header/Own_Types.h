@@ -88,14 +88,25 @@ typedef struct
     exampleReturnType status;
 } Motor_OnOff_SType;
 
+/**
+ * @brief Bit field
+ */
 typedef struct
 {
-    boolean firstVisit:1;
-    boolean comeAgain:1;
-    uint8 fingerLost:4;
-    boolean sharkAttack:1;
-    uint8 daysWeek:3;
-}Survey_SType;
+    boolean firstVisit : 1;
+    boolean comeAgain : 1;
+    uint8 fingerLost : 4;
+    boolean sharkAttack : 1;
+    uint8 daysWeek : 3;
+} Survey_SType;
+
+typedef struct Island_SType
+{
+    char *name;
+    char *opens;
+    char *closes;
+    struct Island_SType *next;
+} Island_SType;
 
 /**
  * @brief Structure of fruit order
