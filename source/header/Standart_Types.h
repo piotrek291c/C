@@ -2,11 +2,11 @@
 #define STANDART_TYPES_H
 
 /**********************************************************************************************************************
- * INCLUDES
+ * INCLUDES SECTION
  *********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  GLOBAL CONSTANT MACROS
+ *  GLOBAL CONSTANT MACROS SECTION
  *********************************************************************************************************************/
 
 # define MSB_FIRST        0u    /* big endian ordering bit */
@@ -34,11 +34,11 @@
 # define STD_OFF      0u
 
 /**********************************************************************************************************************
- *  GLOBAL FUNCTION MACROS
+ *  GLOBAL FUNCTION MACROS SECTION
  *********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  GLOBAL DATA TYPES AND STRUCTURES
+ *  GLOBAL DATA TYPES AND STRUCTURES SECTION
  *********************************************************************************************************************/
 
  typedef unsigned char         boolean;       /*        TRUE .. FALSE           */
@@ -55,7 +55,7 @@
 
  typedef unsigned long         uint32;        /*           0 .. 4294967295      */
 
- 
+
 
  typedef signed int            sint8_least;   /* At least 7 bit + 1 bit sign    */
 
@@ -69,14 +69,14 @@
 
  typedef unsigned int          uint32_least;  /* At least 32 bit                */
 
- 
+
 #if defined(__ghs__) && !defined(__LLONG_BIT)
 
- /* 
+ /*
    The option --no_long_long for GHS compiler disables the support for the long long data type and generates compile
    errors if this type is used. Following typedefs are omitted if --no_long_long is
    given (__LLONG_BIT is not defined in this case).
- */ 
+ */
 
 #else
 
@@ -88,17 +88,17 @@
 
 #endif
 
- 
 
-#if defined(__ghs__) && defined(__NoFloat__) 
 
- /* 
+#if defined(__ghs__) && defined(__NoFloat__)
+
+ /*
 
    The option -fnone for GHS compiler disallows all floating-point operations and generates compile errors if such
    operations are used by the software. This also applies to any corresponding type definition. 
    Following typedefs are omitted if -fnone is given (__NoFloat__ is defined in this case).
 
- */ 
+ */
 
 # else
 
@@ -119,11 +119,11 @@
 typedef uint8 Std_ReturnType;
 
 /**********************************************************************************************************************
- *  GLOBAL DATA PROTOTYPES
+ *  GLOBAL DATA PROTOTYPES SECTION
  *********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  GLOBAL FUNCTION PROTOTYPES
+ *  GLOBAL FUNCTION PROTOTYPES SECTION
  *********************************************************************************************************************/
 
 #endif  /* STANDART_TYPES_H */
