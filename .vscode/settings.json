@@ -27,6 +27,7 @@
         "standart_types.h": "c",
         "chapter6.h": "c",
         "string.h": "c",
-        "template.h": "c"
+        "template.h": "c",
+        "cwchar": "cpp"
     }
 }

@@ -28,7 +28,9 @@
  *  GLOBAL FUNCTION MACROS SECTION
  *********************************************************************************************************************/
 
-typedef void (*ExampleNotificationCallbackType)(void); /* Example MACROS */
+typedef void (*ExampleNotificationCallbackType)(void); /* Example  */
+
+typedef boolean (*Match_text_FptrType)(char *);
 
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES SECTION
@@ -168,6 +170,13 @@ typedef struct
     uint8 teeth;
     Preferences_SType care;
 } Fish_SType;
+
+typedef struct
+{
+    uint16 width;
+    uint16 height;
+} Rectangle_SType;
+
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES SECTION
