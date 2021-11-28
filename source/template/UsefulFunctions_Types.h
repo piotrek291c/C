@@ -1,6 +1,6 @@
 /*******************************************************************************
 * @file
-* @brief     Header file template_Types.h
+* @brief     Header file UsefulFunctions_Types.h
 *
 * @par Copyright
 * This code is the property of \n
@@ -10,8 +10,8 @@
 *
 *******************************************************************************/
 
-#ifndef __TEMPLATE_TYPES_H__
-#define __TEMPLATE_TYPES_H__
+#ifndef __USEFULFUNCTIONS_TYPES_H__
+#define __USEFULFUNCTIONS_TYPES_H__
 
 /**********************************************************************************************************************
  * INCLUDES SECTION
@@ -78,15 +78,15 @@ typedef struct
     uint8 fingerLost : 4;
     boolean sharkAttack : 1;
     uint8 daysWeek : 3;
-} Survey_BFSType;
+} Survey_SType;
 
-typedef struct Island_RSType
+typedef struct Island_SType
 {
     char *name;
     char *opens;
     char *closes;
-    struct Island_RSType *next;
-} Island_RSType;
+    struct Island_SType *next;
+} Island_SType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES SECTION
@@ -96,8 +96,8 @@ typedef struct Island_RSType
  *  GLOBAL FUNCTION PROTOTYPES SECTION
  *********************************************************************************************************************/
 
-#endif // __TEMPLATE_TYPES_H__
+#endif // __USEFULFUNCTIONS_TYPES_H__
 
 /**********************************************************************************************************************
- *  END OF FILE: template_Types.h
+ *  END OF FILE: UsefulFunctions_Types.h
  *********************************************************************************************************************/

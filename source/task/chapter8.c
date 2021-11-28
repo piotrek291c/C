@@ -1,6 +1,6 @@
 /*!*********************************************************************************
 * @file
-* @brief     Source file main.c
+* @brief     Source file chapter8.c Chapter 8 from book
 *
 * @par Copyright
 * This code is the property of \n
@@ -13,16 +13,11 @@
 /*******************************************************************************
  * INCLUDES SECTION
 *******************************************************************************/
-#include <stdio.h>
-#include "Standart_Types.h"
-#include "chapter1.h"
-#include "chapter2.h"
-#include "chapter3.h"
-#include "chapter4.h"
-#include "chapter5.h"
-#include "chapter6.h"
-#include "chapter7.h"
 #include "chapter8.h"
+#include <limits.h>
+#include <float.h>
+#include <string.h>
+#include <stdarg.h>
 
 /*!*****************************************************************************
  * PRIVATE VARIABLES SECTION
@@ -37,28 +32,15 @@
 *******************************************************************************/
 
 /**
- * @brief Function  main
+ * @brief function from chapter 8
  *
- * @param argc
- * @param argv
- * @return int
+ * @return Std_ReturnType
  */
-int main(int argc, char *argv[])
+Std_ReturnType chapter8_exc1(int argc, char *argv[])
 {
 
-   // chapter1_exc1();
-   // chapter2_exc1();
-   // chapter3_exc1(argc, argv);
-   // chapter4_exc1(argc, argv);
-   // chapter5_exc1(argc, argv);
-   chapter8_exc1(argc, argv);
-
-   getchar();
-   getchar();
-   getchar();
-   return 0;
+    return E_OK;
 }
-
 /*!*****************************************************************************
  * STOP - FUNCTIONS SECTION
 *******************************************************************************/

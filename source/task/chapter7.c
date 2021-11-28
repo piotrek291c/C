@@ -17,6 +17,7 @@
 #include <limits.h>
 #include <float.h>
 #include <string.h>
+#include <stdarg.h>
 
 /*!*****************************************************************************
  * PRIVATE VARIABLES SECTION
@@ -35,11 +36,20 @@ char *ADS[] = {
 sint16 scores[] = {6, 4, 2, 8, 9, 5, 9, 0, 3, 1, 5, 7, 0};
 
 Rectangle_SType rectangle[] = {{2, 2}, {3, 3}, {9, 9}, {5, 5}, {7, 7}, {4, 4}};
+
+char *listName[] = {
+    "Piotr",
+    "Pawel",
+    "Adam",
+    "Robert",
+    "Wojtek",
+    "Olaf"};
 /*!*****************************************************************************
  * START - STATIC FUNCTIONS SECTION
 *******************************************************************************/
 
-static boolean sportNoBieber(char *s)
+static boolean
+sportNoBieber(char *s)
 {
     return ((strstr(s, "sport")) && (!strstr(s, "Bibera")));
 }
@@ -100,6 +110,101 @@ static int compareRectangle(const void *a, const void *b)
 
     return (nr1->height * nr1->height) - (nr2->height * nr2->width);
 }
+
+static int compareNames(const void *a, const void *b)
+{
+    char **nr1 = (char **)a;
+    char **nr2 = (char **)b;
+
+    return strcmp(*nr1, *nr2);
+}
+
+static int compareRectangleDesc(const void *a, const void *b)
+{
+    Rectangle_SType *nr1 = (Rectangle_SType *)a;
+    Rectangle_SType *nr2 = (Rectangle_SType *)b;
+
+    return (nr2->height * nr2->height) - (nr1->height * nr1->width);
+}
+
+static int compareNamesDesc(const void *a, const void *b)
+{
+    char **nr1 = (char **)a;
+    char **nr2 = (char **)b;
+
+    return strcmp(*nr2, *nr1);
+}
+
+static void dump(Response_SType response)
+{
+    printf("Drogi %s \n", response.name);
+    printf("Niestety zostales odrzucony \n");
+}
+
+static void secondChance(Response_SType response)
+{
+    printf("Drogi %s \n", response.name);
+    printf("Druga szansa \n");
+}
+
+static void marriage(Response_SType response)
+{
+    printf("Drogi %s \n", response.name);
+    printf("Gratulujemy propozycji malzenstwa \n");
+}
+
+static float32 price(Drink_EType price)
+{
+    switch (price)
+    {
+    case MUDSLIDE:
+        return 6.79;
+        break;
+    case FUZZY_NAVEL:
+        return 5.31;
+        break;
+    case MONKEY_GLAND:
+        return 4.82;
+        break;
+    case ZOMBIE:
+        return 5.89;
+        break;
+    default:
+        return 0.0;
+        break;
+    }
+}
+
+static void print_sint16(sint16 args, ...)
+{
+    va_list ap;
+    va_start(ap, args);
+
+    sint16 i;
+
+    for (i = 0; i < args; i++)
+    {
+        printf("argument: %d \n", va_arg(ap, int));
+    }
+
+    va_end(ap);
+}
+
+static float32 total(int args, ...)
+{
+    float32 total = 0;
+
+    va_list ap;
+    va_start(ap, args);
+
+    for (uint8 i = 0; i < args; i++)
+    {
+        total += price(va_arg(ap, Drink_EType));
+    }
+
+    va_end(ap);
+    return total;
+}
 /*******************************************************************************
  * START - FUNCTIONS SECTION
 *******************************************************************************/
@@ -140,6 +245,70 @@ Std_ReturnType chapter7_exc1(int argc, char *argv[])
     {
         printf("%d,%d  ", rectangle[i].height, rectangle[i].width);
     }
+
+    printf("\n");
+
+    qsort(listName, sizeof(listName) / sizeof(listName[0]), sizeof(char *), compareNames);
+
+    for (uint8 i = 0; i < sizeof(listName) / sizeof(listName[0]); i++)
+    {
+        printf("%s  \n", listName[i]);
+    }
+    printf("\n");
+
+    qsort(rectangle, sizeof(rectangle) / sizeof(rectangle[0]), sizeof(Rectangle_SType), compareRectangleDesc);
+
+    for (uint8 i = 0; i < sizeof(rectangle) / sizeof(rectangle[0]); i++)
+    {
+        printf("%d,%d  ", rectangle[i].height, rectangle[i].width);
+    }
+
+    printf("\n");
+
+    qsort(listName, sizeof(listName) / sizeof(listName[0]), sizeof(char *), compareNamesDesc);
+
+    for (uint8 i = 0; i < sizeof(listName) / sizeof(listName[0]); i++)
+    {
+        printf("%s  \n", listName[i]);
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    Response_SType r[] =
+        {
+            {"Michale", DUMP},
+            {"Lukaszu", SECOND_CHANCE},
+            {"Macieju", SECOND_CHANCE},
+            {"Wilhelmie", MARRIAGE},
+        };
+
+    uint8 i;
+    for (i = 0; i < 4; i++)
+    {
+        switch (r[i].type)
+        {
+        case DUMP:
+            dump(r[i]);
+            break;
+        case SECOND_CHANCE:
+            secondChance(r[i]);
+            break;
+        default:
+            marriage(r[i]);
+            break;
+        }
+    }
+
+    printf("\n\n");
+
+    Replies_FPtrType replies = {dump, secondChance, marriage};
+    for (i = 0; i < 4; i++)
+    {
+        replies[r[i].type](r[i]);
+    }
+
+    print_sint16(3, 67, 98, 128);
+
+    printf("Cena wynosi: %.2f zl \n", total(3, MONKEY_GLAND, MUDSLIDE, FUZZY_NAVEL));
 
     return E_OK;
 }

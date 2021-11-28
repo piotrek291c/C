@@ -25,14 +25,6 @@
 #define EXAMPLE 0u /* Example DEFINE */
 
 /**********************************************************************************************************************
- *  GLOBAL FUNCTION MACROS SECTION
- *********************************************************************************************************************/
-
-typedef void (*ExampleNotificationCallbackType)(void); /* Example  */
-
-typedef boolean (*Match_text_FptrType)(char *);
-
-/**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES SECTION
  *********************************************************************************************************************/
 
@@ -59,6 +51,21 @@ typedef enum
     UNIT_KGS = 1,
     UNIT_LITTERS = 2,
 } Unit_Measure_EType;
+
+typedef enum
+{
+    DUMP = 0,
+    SECOND_CHANCE = 1,
+    MARRIAGE = 2,
+} Response_EType;
+
+typedef enum
+{
+    MUDSLIDE = 0,
+    FUZZY_NAVEL = 1,
+    MONKEY_GLAND = 2,
+    ZOMBIE = 3,
+} Drink_EType;
 
 /**
  * @brief Union example storing data of motor
@@ -100,7 +107,7 @@ typedef struct
     uint8 fingerLost : 4;
     boolean sharkAttack : 1;
     uint8 daysWeek : 3;
-} Survey_SType;
+} Survey_BFSType;
 
 typedef struct Island_SType
 {
@@ -177,6 +184,21 @@ typedef struct
     uint16 height;
 } Rectangle_SType;
 
+typedef struct
+{
+    char *name;
+    Response_EType type;
+} Response_SType;
+
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION MACROS SECTION
+ *********************************************************************************************************************/
+
+typedef void (*ExampleNotificationCallbackType)(void); /* Example  */
+
+typedef boolean (*Match_text_FptrType)(char *);
+
+typedef void (*Replies_FPtrType[])(Response_SType);
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES SECTION

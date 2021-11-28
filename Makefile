@@ -112,7 +112,8 @@ SOURCES = 	$(SRC)/main.c  \
 			$(SRC)/task/chapter4.c \
 			$(SRC)/task/chapter5.c \
 			$(SRC)/task/chapter6.c \
-            $(SRC)/task/chapter7.c
+			$(SRC)/task/chapter7.c \
+            $(SRC)/task/chapter8.c
 
 DEP = $(patsubst %.c, %.d, $(SOURCES))
 

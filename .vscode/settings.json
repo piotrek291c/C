@@ -28,6 +28,8 @@
         "chapter6.h": "c",
         "string.h": "c",
         "template.h": "c",
-        "cwchar": "cpp"
+        "cwchar": "cpp",
+        "usefulfunctions.h": "c",
+        "stdarg.h": "c"
     }
 }
