@@ -23,6 +23,7 @@
 #include "chapter6.h"
 #include "chapter7.h"
 #include "chapter8.h"
+#include "chapter9.h"
 
 /*!*****************************************************************************
  * PRIVATE VARIABLES SECTION
@@ -51,11 +52,9 @@ int main(int argc, char *argv[])
    // chapter3_exc1(argc, argv);
    // chapter4_exc1(argc, argv);
    // chapter5_exc1(argc, argv);
-   chapter8_exc1(argc, argv);
+   chapter9_exc1(argc, argv);
 
-   getchar();
-   getchar();
-   getchar();
+   system("pause");
    return 0;
 }
 

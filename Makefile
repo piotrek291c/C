@@ -101,6 +101,9 @@ endif
 # Source SECTION
 # TODO: Add all file to path
 ##########################################################################################
+# The -I option tells gcc that there is another one where to look for header files.
+# Compiler still will look for them in all standard directories,
+# however will check the directories given with the -I option first.
 INCLUDE =	-I./source \
 			-I./source/header \
 			-I./source/task
@@ -113,7 +116,8 @@ SOURCES = 	$(SRC)/main.c  \
 			$(SRC)/task/chapter5.c \
 			$(SRC)/task/chapter6.c \
 			$(SRC)/task/chapter7.c \
-            $(SRC)/task/chapter8.c
+			$(SRC)/task/chapter8.c \
+            $(SRC)/task/chapter9.c
 
 DEP = $(patsubst %.c, %.d, $(SOURCES))
 
