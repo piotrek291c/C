@@ -200,6 +200,7 @@ typedef boolean (*Match_text_FptrType)(char *);
 
 typedef void (*Replies_FPtrType[])(Response_SType);
 
+typedef void (*HandlerSignal)(int);
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES SECTION
  *********************************************************************************************************************/

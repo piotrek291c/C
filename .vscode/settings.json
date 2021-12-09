@@ -30,6 +30,11 @@
         "template.h": "c",
         "cwchar": "cpp",
         "usefulfunctions.h": "c",
-        "stdarg.h": "c"
+        "stdarg.h": "c",
+        "windows.h": "c",
+        "time.h": "c",
+        "tchar.h": "c",
+        "signal.h": "c",
+        "_mingw.h": "c"
     }
 }
