@@ -49,7 +49,7 @@ Std_ReturnType chapter8_exc1(int argc, char *argv[])
 {
 
     char comment[80];
-    char cmd[120];
+    char cmd[240];
     char time[40];
 
     fgets(comment, 80, stdin);

@@ -6,8 +6,8 @@
     "workbench.editor.highlightModifiedTabs": true, // Podświetla zmodyfikowane karty
     "files.trimFinalNewlines": true,  // Po zapisaniu pliku program VS Code przytnie wszelkie dodatkowe znaki nowej linii na końcu pliku
     "editor.acceptSuggestionOnEnter": "off",  // Akceptowanie sugestii za pomocą Enter wyłączone
-    "editor.rulers": [130],  // Włączenie poiomej lini znaków po 120
-    "editor.minimap.maxColumn": 60,  // Rozmiar minimapy
+    "editor.rulers": [132],  // Włączenie poiomej lini znaków po 132
+    "editor.minimap.maxColumn": 80,  // Rozmiar minimapy
     "editor.quickSuggestions": // Włączenie podpowiedzi podczas pisania komentarzy i tekstu w ""
     {
         "comments": true,

@@ -34,7 +34,7 @@ static void bermuda(void)
     float32 lat;
     float32 longi;
     char tab[80];
-    while (scanf("%f,%f,%79[^\n]", &lat, &longi, tab) == 3)
+    while (scanf("%f,%f,%79s[^\n]", &lat, &longi, tab) == 3)
     {
         if ((lat >= 26) && (lat <= 34) &&
             (longi <= -64) && (longi >= -76))
