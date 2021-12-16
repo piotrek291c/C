@@ -208,6 +208,8 @@ Nazwa: Polish - Code Spell Checker
 
 Nazwa: Trailing Spaces
 
+Nazwa: EditorConfig for VS Code
+
 
 <!-- Tabelka konwersji szesnastkowej na dwójkową  i dziesiętną -->
 
