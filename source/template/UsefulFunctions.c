@@ -389,3 +389,24 @@ void convertBCDToString(unsigned char *bcd_arr, uint8 bcd_len, char *str_arr, ui
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////
+uint32 Convert(uint32 value, const uint32 base1, const uint32 base2)
+{
+    uint32 result = 0;
+    for (int i = 0; value > 0; i++)
+    {
+        result += value % base1 * pow(base2, i);
+        value /= base1;
+    }
+    return result;
+}
+
+uint32 FromBCDToDec(uint32 value)
+{
+    return Convert(value, 16, 10);
+}
+
+uint32 FromDecToBCD(uint32 value)
+{
+    return Convert(value, 10, 16);
+}
+//////////////////////////////////////////////////////////////////////////////////////
