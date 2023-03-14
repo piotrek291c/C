@@ -72,6 +72,9 @@ char *strstr(const char *str1, const char *str2);
  */
 char *strchr(char *str, int character);
 
+strrchr
+
+
 /**
  * @brief The function adds to the Destination chain SOURCE. Sign \ 0 from the end of the Destination chain is
  * overwritten by the first SOURCE chain sign. The source chain is added to the target chain, including the '\ 0' mark.
@@ -81,6 +84,9 @@ char *strchr(char *str, int character);
  * @return char* - Returns the address passed through the Destination argument.
  */
 char *strcat(char *destination, const char *source);
+
+strncat 
+strncpy
 
 /**
  * @brief The function copies characters (SRC) to the characters (DEST). The function does not check whether the copied chain will fit in the target table.
@@ -149,6 +155,13 @@ void free(void *ptr);
  */
 char *strdup(const char *sTekst);
 
+
+strlwr
+strupr
+strrev
+strset
+strtok
+
 /**
  * @brief The function performs a quick sorting algorithm (Quicksort) on a blackboard transferred as an BASE argumet. The number of elements in the table specifies the NUM argument, while the number of bytes occupied by one element of the array is given as the Width argument.
  *
@@ -170,23 +183,6 @@ void qsort(
  * @return int When Command is different from NULL, the function returns a value that depends on the value that will be returned by the command interpreter. The function returns the value 0 only when the command interpreter also drew a value of 0. Otherwise, the function returns the value -1 that indicates the occurrence of an error and sets ERRNO to one of the following values.
  */
 int system(const char *command);
-
-/**
- * @brief Checks whether the sign passed as an argument is a letter of alphabet.
- *
- * @param ch ASCII sign code
- * @return int The ISALPHA function returns a value different from zero when the argument that has been forwarded to the function is a letter of alphabet. Otherwise, the function returns the zero value.
- */
-int isalpha(int ch);
-
-/**
- * @brief Funkcja isdigit zwraca wartość różną od zera gdy argument, który został przekazany do funkcji jest cyfrą. W przeciwnym wypadku funkcja zwraca wartość zero.
-
- *
- * @param ch ASCII sign code
- * @return int
- */
-int isdigit(int ch);
 
 /**
  * @brief It is looking for the first occurrence of Value (Interpreted as Unsigned Char) in the first non-bytes of the block indicated by PTR.
@@ -227,6 +223,35 @@ void *memcpy(void *destination, const void *source, size_t num);
  */
 void *memset(void *ptr, int value, size_t num);
 
+memmove
+
+/**
+ * @brief Checks whether the sign passed as an argument is a letter of alphabet.
+ * isNumberAlpha
+ * @param ch ASCII sign code
+ * @return int The ISALPHA function returns a value different from zero when the argument that has been forwarded to the function is a letter of alphabet. Otherwise, the function returns the zero value.
+ */
+int isalpha(int ch);
+
+/**
+ * @brief Funkcja isdigit zwraca wartość różną od zera gdy argument, który został przekazany do funkcji jest cyfrą. W przeciwnym wypadku funkcja zwraca wartość zero.
+   isDigitNumber
+ *
+ * @param ch ASCII sign code
+ * @return int
+ */
+int isdigit(int ch);
+
+isalnum
+isspace
+islower
+isupper
+isxdigit
+iscntrl
+isprint
+tolower
+toupper
+
 /**
  * @brief The function converts the value saved in the character chain to the integer of the integer type INT.
  * 
@@ -246,6 +271,121 @@ int atoi(const char *str);
  */
 char *itoa(int value, char *str, int base);
 
+atof
+
+abs
+floor
+round
+ceil
+sqrt
+pow 
+
 /*!*****************************************************************************
  * STOP - FUNCTIONS SECTION
 *******************************************************************************/
+
+// Exemple function OWN:
+
+//////////////////////////////////////////////////////////////////////////////////////
+uint8 isNumberAlpha(uint8 c)
+{
+  // checks for an alphabetic character; in the standard "C"  locale, it is
+  // equivalent  to (isupper(c) || islower(c)).  In some locales, there may
+  // be additional characters for which isalpha() is true -- letters which
+  // are neither upper case nor lower case.
+  return (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')));
+}
+
+int main()
+{
+    char tab[] ="1A2B3C4G9RT2211290837";
+    char tabAlpha[] = "0123456789ABCDEFGHabcdefghij";
+    printf("\n Liczba zamowieonych dan: %d", isNumberAlpha(tabAlpha[20]));
+
+    return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////
+
+int isDigitNumber (int value)
+{
+	return((value>='0') && (value<='9'));
+}
+
+
+int main()
+{
+    char tab[] ="1A2B3C4G9RT2211290837";
+    char tabAlpha[] = "0123456789ABCDEFGHabcdefghij";
+    printf("\n Liczba zamowieonych dan: %d", isDigitNumber(tabAlpha[5]));
+
+    return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+void convertStringToBCD(char *input, uint8 *output) {
+    int len = strlen(input);
+    int i = 0; 
+    int j = 0;
+    for (i = 0; i < len; i=i+2) 
+    {
+        if (((input[i] - '0') < 0) || ((input[i] - '0') > 9)) {
+            printf("Invalid input\n");
+            return;
+        }
+        output[j++] = (((input[i] - '0') & 0x0F) << 4) | ((input[i + 1] - '0') & 0x0F );
+    }
+    output[j] = '\0';
+}
+
+int main()
+{
+    char input[] = "2211290837";
+    uint8 output[20];
+    convertStringToBCD(input, output);
+    printf("Input: %s\n", input);
+    printf("BCD: ");
+    for (i = 0; i < sizeof(output); i++) {
+        printf("%02x ", output[i]);
+    }
+    return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+void convertBCDToString(unsigned char *bcd_arr, uint8 bcd_len, char *str_arr, uint8 str_len) 
+{
+    uint8 i = 0; 
+    uint8 j = 0;
+    unsigned char bcd_val;
+    char high, low;
+    // clear the output string
+    memset(str_arr, 0, str_len);
+
+    // convert each BCD value to two ASCII characters
+    for (i = 0, j = 0; i < bcd_len && j < str_len-1; i++) 
+    {
+        bcd_val = bcd_arr[i];
+        high = bcd_val >> 4;
+        low = bcd_val & 0x0F;
+        if (high > 9)
+        {
+            printf("Invalid input\n");
+            return;
+        }
+        else 
+        {
+            high += '0';
+        }
+        if (low > 9) 
+        {
+            printf("Invalid input\n");
+            return;
+        }
+        else
+        {
+            low += '0';
+        }
+        str_arr[j++] = high;
+        str_arr[j++] = low;
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////
