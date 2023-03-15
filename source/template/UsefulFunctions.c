@@ -410,3 +410,191 @@ uint32 FromDecToBCD(uint32 value)
     return Convert(value, 10, 16);
 }
 //////////////////////////////////////////////////////////////////////////////////////
+
+/**
+   \brief Zero a block of memory
+   \param out    The destination of the area to zero
+   \param outlen The length of the area to zero (octets)
+*/
+void zeromem(volatile void *out, size_t outlen)
+{
+   volatile uint8 *mem = out;
+   while (outlen-- > 0) {
+      *mem++ = '\0';
+   }
+}
+//////////////////////////////////////////////////////////////////////////////////////
+/*------------------------------------------------------------------------------
+                      Global Functions Prototypes
+------------------------------------------------------------------------------*/
+/*  Low level endianess conversion */
+void ByteSwapEndianess(uint8* data, uint8 dataSize) {
+
+  uint8 lowByte, hiByte, tmp;
+
+  hiByte = dataSize - 1u;
+  for(lowByte = 0u; hiByte > lowByte; lowByte++)
+  {
+    tmp=data[lowByte];
+    data[lowByte] = data[hiByte];
+    data[hiByte] = tmp;
+    hiByte--;
+  }
+}
+
+ uint32 tekst[] = {1176550019};
+ printf("tekst: %ld 0x%lX\n", tekst[0], tekst[0]);
+ ByteSwapEndianess((uint8 *)tekst, 4);
+
+ //////////////////////////////////////////////////////////////////////////////////////
+// Assumes little endian
+void printBits(size_t const size, void const * const ptr)
+{
+    unsigned char *b = (unsigned char*) ptr;
+    unsigned char byte;
+    int i, j;
+    
+    for (i = size-1; i >= 0; i--) {
+        for (j = 7; j >= 0; j--) {
+            byte = (b[i] >> j) & 1;
+            printf("%u", byte);
+        }
+    }
+    puts("");
+}
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * Copies the given number of bits from srcByte + srcOffset to destByte+destOffset.
+ * Bit counting is sawtooth, i.e. bit 0 is the least significant bit of byte at offset 0
+ *
+ * \param[in]  srcByte    source buffer
+ * \param[in]  srcOffset  source offset in bits
+ * \param[out] destByte   destination buffer
+ * \param[in]  destOffset destination offset in bits
+ * \param[in]  count      number of bits to copy
+ *
+ * \remark none
+ */
+void BUtil_CopyBits(const uint8 srcByte[], uint8 srcOffset, uint8 destByte[], uint8 destOffset, uint8 count) {
+  uint8 byteSrcOfs = srcOffset / 8u;
+  uint8 bitSrcOfs = srcOffset % 8u;
+  uint8 byteDstOfs = destOffset / 8u;
+  uint8 bitDstOfs = destOffset % 8u;
+
+  if ((0u == bitDstOfs) && (0u == bitSrcOfs)) {
+    uint8 bytesToCopy = count / 8u;
+    uint8 bitsToCopy = count % 8u;
+    (void)memcpy(&destByte[byteDstOfs], &srcByte[byteSrcOfs], (size_t)bytesToCopy);
+    if (bitsToCopy > 0u) {
+      uint8 mask = ((uint8)(1u << bitsToCopy) - 1u);
+      destByte[byteDstOfs + bytesToCopy] = (destByte[byteDstOfs + bytesToCopy] & (uint8)~mask) | (srcByte[byteSrcOfs + bytesToCopy] & mask);
+    }
+  } else if (0u == destOffset) {
+    uint8 byteCount = count / 8u;
+    uint8 bitCount = count % 8u;
+
+    while (byteCount > 0u) {
+      destByte[byteDstOfs] = (srcByte[byteSrcOfs] >> bitSrcOfs) | (uint8)(srcByte[byteSrcOfs+1u] << (8u-bitSrcOfs));
+      --byteCount;
+      ++byteDstOfs;
+      ++byteSrcOfs;
+    }
+    if (bitCount > 0u) {
+      uint8 mask = ((uint8)(1u << bitCount) - 1u);
+      destByte[byteDstOfs] &= (uint8)~mask;
+      if ((8u - bitSrcOfs) < bitCount) {
+        destByte[byteDstOfs] |= ((srcByte[byteSrcOfs] >> bitSrcOfs) | (uint8) (srcByte[byteSrcOfs + 1u] << (8u - bitSrcOfs))) & mask;
+      } else {
+        destByte[byteDstOfs] |= ((uint8) (srcByte[byteSrcOfs] >> bitSrcOfs)) & mask;
+      }
+    }
+  } else if (0u == srcOffset) {
+    uint8 maskPart1, maskPart2;
+    uint8 byteCount = count / 8u;
+    uint8 bitCount = count % 8u;
+
+    uint8 mask = ((uint8)(1u << bitDstOfs) - 1u);
+    while(byteCount > 0u) {
+      destByte[byteDstOfs] &= mask;
+      destByte[byteDstOfs] |= (uint8)(srcByte[byteSrcOfs] << bitDstOfs);
+      destByte[byteDstOfs + 1u] &= (uint8)~mask;
+      destByte[byteDstOfs + 1u] |= (uint8) (srcByte[byteSrcOfs] >> (8u-bitDstOfs));
+      --byteCount;
+      ++byteDstOfs;
+      ++byteSrcOfs;
+    }
+    if (bitCount > 0u) {
+      if (bitCount >= (8u - bitDstOfs)) {
+        mask = ((uint8)(1u << bitDstOfs)) - 1u;
+        destByte[byteDstOfs] &= mask;
+        destByte[byteDstOfs] |= (uint8) (srcByte[byteSrcOfs] << bitDstOfs);
+        if (bitCount > (8u - bitDstOfs)) {
+          /* now delete in the adjacent byte the remaining lower bits:  bitcount - 8 + bitDstOfs */
+          mask = ((uint8)(1u << ((bitCount - 8u) + bitDstOfs))) - 1u;
+          /* PRQA S 1860 2 */
+          destByte[byteDstOfs + 1] &= (uint8) ~mask;
+          destByte[byteDstOfs + 1] |= (uint8) ((uint8) (srcByte[byteSrcOfs] >> (8u - bitDstOfs)) & (uint8) mask);
+        }
+      } else {
+        maskPart1 = (uint8) ((((uint8) (1u << (8u - bitDstOfs - bitCount))) - 1u) << (bitDstOfs+bitCount));
+        maskPart2 = ((uint8)(1u << bitDstOfs)) - 1u;
+        mask = maskPart1 | maskPart2;
+        destByte[byteDstOfs] &= mask;
+        destByte[byteDstOfs] |= (uint8) (((uint8)(srcByte[byteSrcOfs] << bitDstOfs)) & (uint8) ~maskPart1);
+      }
+    }
+  } else {
+    uint8 mask = ((uint8)(1u << bitDstOfs) - 1u);
+    uint8 byteCount;
+    uint8 bitCount;
+    if (bitDstOfs>bitSrcOfs) {
+      byteCount = ((count + bitSrcOfs) - 1u) / 8u;
+      bitCount = ((count + bitSrcOfs) - 1u) % 8u;
+    } else {
+      byteCount = ((count + bitDstOfs) - 1u) / 8u;
+      bitCount = ((count + bitDstOfs) - 1u) % 8u;
+    }
+
+    while(byteCount > 0u) {
+      uint8 shiftedSrcByte = (srcByte[byteSrcOfs] >> bitSrcOfs) | (uint8)(srcByte[byteSrcOfs+1u] << (8u-bitSrcOfs));
+      destByte[byteDstOfs] &= mask;
+      destByte[byteDstOfs] |= (uint8)(shiftedSrcByte << bitDstOfs);
+      destByte[byteDstOfs + 1u] &= (uint8)~mask;
+      destByte[byteDstOfs + 1u] |= shiftedSrcByte >> (8u-bitDstOfs);
+      --byteCount;
+      ++byteDstOfs;
+      ++byteSrcOfs;
+    }
+    if (bitCount > 0u) {
+      if (bitDstOfs>bitSrcOfs) {
+        uint8 shiftedSrcByte = (srcByte[byteSrcOfs] >> bitSrcOfs);
+        destByte[byteDstOfs] &= mask;
+        destByte[byteDstOfs] |= (uint8)(shiftedSrcByte << bitDstOfs);
+      } else {
+        uint8 upMask = (uint8)((uint8)(1u << bitCount) - 1u) << bitDstOfs;
+        uint8 shiftedSrcByte = (srcByte[byteSrcOfs] >> bitSrcOfs) | (uint8)(srcByte[byteSrcOfs+1u] << (8u-bitSrcOfs));
+        destByte[byteDstOfs] &= (uint8)~upMask;
+        destByte[byteDstOfs] |= (uint8)(shiftedSrcByte << bitDstOfs) & upMask;
+      }
+    }
+  }
+} 
+//////////////////////////////////////////////////////////////////////////////////////
+int dataOfProductionYear(char dataSymbolic)
+{
+    const char symbols[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXZ";
+    const int values[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 
+                          0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 
+                          0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 
+                          0x30, 0x31, 0x32, 0x33, 0x34};
+    const int numSymbols = (sizeof(symbols) / sizeof(symbols[0]));
+    for (int i = 0; i < numSymbols; i++) {
+        if (symbols[i] == (dataSymbolic)) {
+            return values[i];
+        }
+    }
+    return 0x00;
+}
+//////////////////////////////////////////////////////////////////////////////////////

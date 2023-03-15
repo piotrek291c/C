@@ -23,6 +23,72 @@
  * GLOBAL CONSTANT MACROS SECTION
 *******************************************************************************/
 
+/**
+ * @brief A macro for handle timer.
+ *
+ * @param t - timer
+ */
+
+#define HANDLE_TIMER( t )                          ( if( t > 0u ) { t--; } )
+/**
+ * @brief A macro for reset timer.
+ *
+ * @param t - timer
+ */
+
+#define RESET_TIMER( t )                           ( t = 0u; )
+/**
+ * @brief A macro for set timer.
+ *
+ * @param t - timer
+ * @param v - value to set
+ */
+#define SET_TIMER( t, v )                          ( t = ( v ); )
+
+/**
+ * @brief A macro for check timer status.
+ *
+ * @param t - timer
+ * @return timer status
+ */
+#define IS_TIMER_FINISHED( t )                     ( t == 0u )
+
+/**
+ * @brief A macro for return abs value.
+ *
+ * @return abs value
+ */
+#define ABS( v )                                   ( (v >= 0) ? ( v ) : ( -v ))
+
+/**
+ * @brief Macro for exponentiation.
+ * @param x - number
+ * @return second power value
+ */
+#define POW2( x )                                                         ( ( x ) * ( x ) )
+
+/**
+ * @brief Convert the order of a multi-byte variable uint32
+ * @param v - value
+ */
+#define BYTE_SWAP_32( v )   { \
+                                ((uint32) (( v & 0xFF000000u) >> 24u) | (( v & 0x00FF0000u) >> 8u) | \
+                                (( v & 0x0000FF00u) <<  8u) | (( v & 0x000000FFu) << 24u)) \
+                            }
+
+/**
+ * @brief Convert the order of a multi-byte variable uint16
+ * @param v - value
+ */
+#define BYTE_SWAP_16( v )    ((uint16) (( v & 0xFF00u) >> 8u) | (( v & 0x00FFu) << 8u))
+
+/* Size of any array state buffer */
+#define SIZE_OF_ARRAY_ELEMENTS(array) ((sizeof(array)) / (sizeof(array[0])))
+
+
+
+
+
 /* template Error code */
 #define TEMPLATE_ERR_OK 0
 #define TEMPLATE_ERR_BUSY -1
